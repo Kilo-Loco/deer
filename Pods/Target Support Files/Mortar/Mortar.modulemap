@@ -1,0 +1,6 @@
+framework module Mortar {
+  umbrella header "Mortar-umbrella.h"
+
+  export *
+  module * { export * }
+}

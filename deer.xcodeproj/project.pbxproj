@@ -3,19 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9378A665E3B57A64DA34254D /* Pods_deer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABBEFE813B6A21DF97700D /* Pods_deer.framework */; };
 		9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EA231B3D250084A38C /* AppDelegate.swift */; };
 		9E6CA5ED231B3D250084A38C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EC231B3D250084A38C /* ViewController.swift */; };
 		9E6CA5F0231B3D250084A38C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EE231B3D250084A38C /* Main.storyboard */; };
 		9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */; };
 		9E6CA5F5231B3D260084A38C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F4231B3D260084A38C /* Assets.xcassets */; };
 		9E6CA5F8231B3D260084A38C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F6231B3D260084A38C /* LaunchScreen.storyboard */; };
+		9E6CA600231B41D90084A38C /* Slate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5FF231B41D90084A38C /* Slate.swift */; };
+		9E6CA607231B45DD0084A38C /* Scooter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA605231B45DD0084A38C /* Scooter+CoreDataClass.swift */; };
+		9E6CA608231B45DD0084A38C /* Scooter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA606231B45DD0084A38C /* Scooter+CoreDataProperties.swift */; };
+		9E6CA60B231B47360084A38C /* SlateScooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA60A231B47360084A38C /* SlateScooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B3991ECD7554A25A669DBFF /* Pods-deer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-deer.debug.xcconfig"; path = "Target Support Files/Pods-deer/Pods-deer.debug.xcconfig"; sourceTree = "<group>"; };
 		9E6CA5E7231B3D250084A38C /* deer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = deer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6CA5EA231B3D250084A38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6CA5EC231B3D250084A38C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,12 @@
 		9E6CA5F4231B3D260084A38C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E6CA5F7231B3D260084A38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E6CA5F9231B3D260084A38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E6CA5FF231B41D90084A38C /* Slate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slate.swift; sourceTree = "<group>"; };
+		9E6CA605231B45DD0084A38C /* Scooter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9E6CA606231B45DD0084A38C /* Scooter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9E6CA60A231B47360084A38C /* SlateScooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlateScooter.swift; sourceTree = "<group>"; };
+		B1C573EC570419F767C77900 /* Pods-deer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-deer.release.xcconfig"; path = "Target Support Files/Pods-deer/Pods-deer.release.xcconfig"; sourceTree = "<group>"; };
+		D7ABBEFE813B6A21DF97700D /* Pods_deer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_deer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9378A665E3B57A64DA34254D /* Pods_deer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9817C866FBB45265B7B2BF43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7ABBEFE813B6A21DF97700D /* Pods_deer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E6CA5DE231B3D250084A38C = {
 			isa = PBXGroup;
 			children = (
 				9E6CA5E9231B3D250084A38C /* deer */,
 				9E6CA5E8231B3D250084A38C /* Products */,
+				EDD7D82EE59CD0B665EE90C2 /* Pods */,
+				9817C866FBB45265B7B2BF43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +79,9 @@
 		9E6CA5E9231B3D250084A38C /* deer */ = {
 			isa = PBXGroup;
 			children = (
+				9E6CA609231B46CB0084A38C /* CoreData */,
+				9E6CA605231B45DD0084A38C /* Scooter+CoreDataClass.swift */,
+				9E6CA606231B45DD0084A38C /* Scooter+CoreDataProperties.swift */,
 				9E6CA5EA231B3D250084A38C /* AppDelegate.swift */,
 				9E6CA5EC231B3D250084A38C /* ViewController.swift */,
 				9E6CA5EE231B3D250084A38C /* Main.storyboard */,
@@ -63,8 +89,26 @@
 				9E6CA5F6231B3D260084A38C /* LaunchScreen.storyboard */,
 				9E6CA5F9231B3D260084A38C /* Info.plist */,
 				9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */,
+				9E6CA5FF231B41D90084A38C /* Slate.swift */,
 			);
 			path = deer;
+			sourceTree = "<group>";
+		};
+		9E6CA609231B46CB0084A38C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9E6CA60A231B47360084A38C /* SlateScooter.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		EDD7D82EE59CD0B665EE90C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B3991ECD7554A25A669DBFF /* Pods-deer.debug.xcconfig */,
+				B1C573EC570419F767C77900 /* Pods-deer.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E6CA5FC231B3D260084A38C /* Build configuration list for PBXNativeTarget "deer" */;
 			buildPhases = (
+				15C5482842F0875874ADA753 /* [CP] Check Pods Manifest.lock */,
 				9E6CA5E3231B3D250084A38C /* Sources */,
 				9E6CA5E4231B3D250084A38C /* Frameworks */,
 				9E6CA5E5231B3D250084A38C /* Resources */,
+				569EF5E86FFDE6C2F1E92229 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +179,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15C5482842F0875874ADA753 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-deer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		569EF5E86FFDE6C2F1E92229 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-deer/Pods-deer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-deer/Pods-deer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-deer/Pods-deer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9E6CA5E3231B3D250084A38C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6CA60B231B47360084A38C /* SlateScooter.swift in Sources */,
 				9E6CA5ED231B3D250084A38C /* ViewController.swift in Sources */,
+				9E6CA607231B45DD0084A38C /* Scooter+CoreDataClass.swift in Sources */,
+				9E6CA608231B45DD0084A38C /* Scooter+CoreDataProperties.swift in Sources */,
 				9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */,
 				9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */,
+				9E6CA600231B41D90084A38C /* Slate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +376,7 @@
 		};
 		9E6CA5FD231B3D260084A38C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B3991ECD7554A25A669DBFF /* Pods-deer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +395,7 @@
 		};
 		9E6CA5FE231B3D260084A38C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1C573EC570419F767C77900 /* Pods-deer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
