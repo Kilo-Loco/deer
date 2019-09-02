@@ -43,9 +43,10 @@ final class AppCoordinator {
     }
     
     private func determineState() -> State {
-        let user = User(email: try! Email("rekylelee@gmail.com"))
-        factory.registerCurrentUser(as: user)
-        return .session(user)
+//        let user = User(email: try! Email("rekylelee@gmail.com"))
+//        factory.registerCurrentUser(as: user)
+//        return .session(user)
+        return .auth
     }
     
     private func didStartSubFlow() -> Bool {

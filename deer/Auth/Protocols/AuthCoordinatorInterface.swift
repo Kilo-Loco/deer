@@ -11,5 +11,6 @@ import UIKit
 protocol AuthCoordinatorInterface: Coordinator {
     var didProvideUser: ((UserInterface) -> Void)? { get set }
     var rootViewController: UINavigationController { get }
+    var factory: AuthFactory { get }
     func showEmailEntry()
 }

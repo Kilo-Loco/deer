@@ -18,13 +18,15 @@ final class AuthCoordinator: AuthCoordinatorInterface {
     // MARK: - Injected Properties
     
     let rootViewController: UINavigationController
+    let factory: AuthFactory
     
     
     // MARK: - Initializer
     
-    init(rootViewController: UINavigationController = .init()) {
+    init(rootViewController: UINavigationController = .init(), factory: AuthFactory) {
         rootViewController.isNavigationBarHidden = true
         self.rootViewController = rootViewController
+        self.factory = factory
     }
     
     
@@ -38,7 +40,6 @@ final class AuthCoordinator: AuthCoordinatorInterface {
     // MARK: - Flows
     
     func showEmailEntry() {
-        let emailEntryVC = EmailEntryViewController()
-        rootViewController.pushViewController(emailEntryVC, animated: false)
+        rootViewController.pushViewController(factory.emailEntryVC, animated: false)
     }
 }

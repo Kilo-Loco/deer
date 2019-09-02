@@ -8,39 +8,18 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
+import Result
 
-final class KeyboardObserver: NSObject {
+final class KeyboardService: KeyboardServiceInterface {
     
-    static let keyboardChange = Notification.Name("KeyboardObserver.keyboardChange")
+    // MARK: - Communication
     
-    // Communication
-    var didUpdateKeyboardFrame: ((CGRect) -> Void)?
+    private let center = NotificationCenter.default.reactive
+    private lazy var keyboardDidShowSignal = center.keyboard(.didShow)
+    private lazy var keyboardWillHideSignal = center.keyboard(.didHide)
     
-    // Tokens
-    private var keyboardWillChangeToken: NSObjectProtocol?
-    
-    // Instance Variabales
-    var keyboardFrame: CGRect = .zero {
-        didSet { didUpdateKeyboardFrame?(keyboardFrame) }
-    }
-    
-    override init() {
-        super.init()
-        keyboardWillChangeToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: .main, using: { [weak self] in
-            self?.setKeyboardFrame($0)
-        })
-    }
-    
-    private func setKeyboardFrame(_ notification: Notification) {
-        if let frame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            keyboardFrame = frame
-            NotificationCenter.default.post(name: KeyboardObserver.keyboardChange, object: frame)
-        }
-    }
-    
-    deinit {
-        if let token = keyboardWillChangeToken {
-            NotificationCenter.default.removeObserver(token)
-        }
-    }
+    lazy var keyboardSignal: Signal<CGRect, NoError> = Signal<KeyboardChangeContext, NoError>
+        .merge(keyboardDidShowSignal, keyboardWillHideSignal)
+        .map { $0.endFrame }
 }

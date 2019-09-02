@@ -34,10 +34,18 @@ final class MainFactory {
         registerDependencies()
     }
     
+    
+    // MARK: - Setup
+    
     private func registerDependencies() {
-        container.register(AuthCoordinatorInterface.self) { _ in
+        container.register(KeyboardServiceInterface.self) { _ in
+            KeyboardService()
+        }
+        
+        container.register(AuthCoordinatorInterface.self) { [unowned self] _ in
             let navigationController = UINavigationController()
-            let authCoordinator = AuthCoordinator(rootViewController: navigationController)
+            let authFactory = AuthFactory(container: self.container)
+            let authCoordinator = AuthCoordinator(rootViewController: navigationController, factory: authFactory)
             return authCoordinator
         }
         

@@ -8,27 +8,26 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 
 final class EmailEntryViewController: UIViewController {
 
     // MARK: - Communication
     
-    var didProvideUser: ((UserInterface) -> Void)?
+//    var didProvideUser: ((UserInterface) -> Void)?
     
     
     // MARK: - Injected Properties
     
     let mainView: EmailEntryView
+    let viewModel: EmailEntryViewModel
     
     
     // MARK: - Initializers
     
-    convenience init() {
-        self.init(mainView: .init())
-    }
-    
-    init(mainView: EmailEntryView = .init()) {
+    init(mainView: EmailEntryView = .init(), viewModel: EmailEntryViewModel) {
         self.mainView = mainView
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,7 +40,26 @@ final class EmailEntryViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-        let user = User(email: try! Email("kyle@gmail.com"))
-//        mainView.deerLabel.reac
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupObservations()
+    }
+    
+    
+    // MARK: - Setup
+    
+    private func setupObservations() {
+        viewModel.keyboardService.keyboardSignal.observeValues { [weak self] keyboardFrame in
+            self?.handle(keyboardFrame)
+        }
+    }
+    
+    
+    // MARK: - Events
+    
+    private func handle(_ keyboardFrame: CGRect) {
+        print("keyboard frame:", keyboardFrame)
     }
 }
