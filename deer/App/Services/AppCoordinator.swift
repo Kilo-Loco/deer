@@ -40,7 +40,8 @@ final class AppCoordinator {
     }
     
     private func determineState() -> State {
-        return .auth
+        let user = User(email: try! Email("rekylelee@gmail.com"))
+        return .session(user)
     }
     
     private func didStartSubFlow() -> Bool {
@@ -48,23 +49,34 @@ final class AppCoordinator {
         
         switch state {
         case .auth:
-            let navigationController = UINavigationController()
-            let authCoordinator = AuthCoordinator(rootViewController: navigationController)
-            childCoordinator = authCoordinator
-            authCoordinator.start()
-            rootViewController = navigationController
+            rootViewController = runAuthFlow()
             
         case .session(let user):
-            let tabBarController = UITabBarController()
-            let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, currentUser: user)
-            childCoordinator = sessionCoordinator
-            sessionCoordinator.start()
-            rootViewController = tabBarController
+            rootViewController = runSessionFlow(with: user)
         }
         
         window.rootViewController?.present(rootViewController, animated: true)
         
         return true
+    }
+    
+    
+    // MARK: - Flows
+    
+    private func runAuthFlow() -> UINavigationController {
+        let navigationController = UINavigationController()
+        let authCoordinator = AuthCoordinator(rootViewController: navigationController)
+        childCoordinator = authCoordinator
+        authCoordinator.start()
+        return navigationController
+    }
+    
+    private func runSessionFlow(with user: User) -> UITabBarController {
+        let tabBarController = UITabBarController()
+        let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, currentUser: user)
+        childCoordinator = sessionCoordinator
+        sessionCoordinator.start()
+        return tabBarController
     }
     
 }

@@ -24,6 +24,7 @@ final class SessionCoordinator: Coordinator {
     // MARK: - Initializer
     
     init(rootViewController: UITabBarController = .init(), currentUser: User) {
+        rootViewController.tabBar.tintColor = .black
         self.rootViewController = rootViewController
         self.currentUser = currentUser
     }

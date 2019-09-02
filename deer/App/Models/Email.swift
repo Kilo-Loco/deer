@@ -12,7 +12,7 @@ struct Email {
     let value: String
     
     init(_ value: String) throws {
-        throw Error.invalid
+        self.value = value
     }
 }
 

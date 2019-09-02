@@ -14,6 +14,8 @@ final class MapCoordinator: Coordinator {
     
     init(in tabBarController: UITabBarController) {
         rootViewController = UINavigationController()
+        rootViewController.tabBarItem.image = UIImage(named: "mapIcon")
+//        tabBarController.
         tabBarController.append(rootViewController)
     }
     
@@ -24,7 +26,8 @@ final class MapCoordinator: Coordinator {
     private func showScooterMapViewController() {
         
         let scooterMapVC = ScooterMapViewController()
-        print("made scooter map")
+        scooterMapVC.title = "Map"
+        scooterMapVC.navigationItem.title = "d e e r"
         rootViewController.pushViewController(scooterMapVC, animated: false)
     }
 }

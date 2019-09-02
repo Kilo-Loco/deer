@@ -10,11 +10,30 @@ import UIKit
 
 final class ScooterMapViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("yup")
-        view.backgroundColor = .red
+    // MARK: - Injected Properties
+    
+    private let mainView: ScooterMapView
+    
+    
+    // MARK: - Initializers
+    
+    convenience init() {
+        self.init(mainView: .init())
     }
     
-
+    init(mainView: ScooterMapView = .init()) {
+        self.mainView = mainView
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - Lifecycle
+    
+    override func loadView() {
+        view = mainView
+    }
 }

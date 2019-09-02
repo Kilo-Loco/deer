@@ -8,12 +8,8 @@
 
 import UIKit
 
-final class ScooterListViewController: UIViewController {
+final class ScooterListViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .blue
-    }
+    
 
 }
