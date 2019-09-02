@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct User {
+struct User: UserInterface {
     let email: Email
 }

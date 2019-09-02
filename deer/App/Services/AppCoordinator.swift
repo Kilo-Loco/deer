@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Swinject
 
 final class AppCoordinator {
     
@@ -22,12 +23,14 @@ final class AppCoordinator {
     // MARK: Injected Properties
     
     private let window: UIWindow
+    private let factory: MainFactory
     
     
     // MARK: - Initializer
     
-    init(window: UIWindow = .init(frame: UIScreen.main.bounds)) {
+    init(window: UIWindow = .init(frame: UIScreen.main.bounds), factory: MainFactory = .init()) {
         self.window = window
+        self.factory = factory
     }
     
     
@@ -41,6 +44,7 @@ final class AppCoordinator {
     
     private func determineState() -> State {
         let user = User(email: try! Email("rekylelee@gmail.com"))
+        factory.registerCurrentUser(as: user)
         return .session(user)
     }
     
@@ -64,21 +68,18 @@ final class AppCoordinator {
     // MARK: - Flows
     
     private func runAuthFlow() -> UINavigationController {
-        let navigationController = UINavigationController()
-        let authCoordinator = AuthCoordinator(rootViewController: navigationController)
+        let authCoordinator = factory.authCoordinator
         childCoordinator = authCoordinator
         authCoordinator.start()
-        return navigationController
+        return authCoordinator.rootViewController
     }
     
     private func runSessionFlow(with user: User) -> UITabBarController {
-        let tabBarController = UITabBarController()
-        let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, currentUser: user)
+        let sessionCoordinator = factory.sessionCoordinator
         childCoordinator = sessionCoordinator
         sessionCoordinator.start()
-        return tabBarController
+        return sessionCoordinator.rootViewController
     }
-    
 }
 
 extension AppCoordinator {

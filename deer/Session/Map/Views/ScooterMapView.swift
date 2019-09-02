@@ -17,7 +17,17 @@ final class ScooterMapView: UIView {
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.showsUserLocation = true
         return mapView
+    }()
+    
+    lazy var rideButton: CircleButton = {
+        let button = CircleButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("RIDE", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .brandPurple
+        return button
     }()
     
     
@@ -37,8 +47,12 @@ final class ScooterMapView: UIView {
     
     private func setup() {
         addSubview(mapView)
+        addSubview(rideButton)
         
         mapView |=| self
+        rideButton.m_bottom |=| layoutMarginsGuide.m_bottom - 20
+        rideButton.m_size |=| 100
+        rideButton.m_centerX |=| m_centerX
     }
 }
 

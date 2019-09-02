@@ -10,6 +10,11 @@ import UIKit
 
 final class EmailEntryViewController: UIViewController {
 
+    // MARK: - Communication
+    
+    var didProvideUser: ((UserInterface) -> Void)?
+    
+    
     // MARK: - Injected Properties
     
     let mainView: EmailEntryView

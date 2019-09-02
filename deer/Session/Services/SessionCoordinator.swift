@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SessionCoordinator: Coordinator {
+final class SessionCoordinator: SessionCoordinatorInterface {
     
     // MARK: - Instance Properties
     
@@ -17,13 +17,13 @@ final class SessionCoordinator: Coordinator {
     
     // MARK: Injected Properties
     
-    private let rootViewController: UITabBarController
-    private let currentUser: User
+    let rootViewController: UITabBarController
+    let currentUser: UserInterface
     
     
     // MARK: - Initializer
     
-    init(rootViewController: UITabBarController = .init(), currentUser: User) {
+    init(rootViewController: UITabBarController = .init(), currentUser: UserInterface) {
         rootViewController.tabBar.tintColor = .black
         self.rootViewController = rootViewController
         self.currentUser = currentUser

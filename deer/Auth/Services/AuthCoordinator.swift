@@ -8,15 +8,27 @@
 
 import UIKit
 
-final class AuthCoordinator: Coordinator {
+final class AuthCoordinator: AuthCoordinatorInterface {
     
-    private let rootViewController: UINavigationController
+    // MARK: - Communication
+    
+    var didProvideUser: ((UserInterface) -> Void)?
+    
+    
+    // MARK: - Injected Properties
+    
+    let rootViewController: UINavigationController
+    
+    
+    // MARK: - Initializer
     
     init(rootViewController: UINavigationController = .init()) {
         rootViewController.isNavigationBarHidden = true
         self.rootViewController = rootViewController
-        
     }
+    
+    
+    // MARK: - Lifecycle
     
     func start() {
         showEmailEntry()
@@ -25,7 +37,7 @@ final class AuthCoordinator: Coordinator {
     
     // MARK: - Flows
     
-    private func showEmailEntry() {
+    func showEmailEntry() {
         let emailEntryVC = EmailEntryViewController()
         rootViewController.pushViewController(emailEntryVC, animated: false)
     }
