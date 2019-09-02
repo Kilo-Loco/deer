@@ -18,12 +18,14 @@ final class SessionCoordinator: Coordinator {
     // MARK: Injected Properties
     
     private let rootViewController: UITabBarController
+    private let currentUser: User
     
     
     // MARK: - Initializer
     
-    init(rootViewController: UITabBarController = .init()) {
+    init(rootViewController: UITabBarController = .init(), currentUser: User) {
         self.rootViewController = rootViewController
+        self.currentUser = currentUser
     }
     
     

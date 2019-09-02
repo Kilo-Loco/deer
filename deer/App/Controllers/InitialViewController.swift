@@ -7,9 +7,30 @@
 //
 
 import UIKit
+import Mortar
 
-class InitialViewController: UIViewController {
+final class InitialViewController: UIViewController {
 
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "deerLogo")
+        return imageView
+    }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
+    
+    private func setup() {
+        view.backgroundColor = .white
+        
+        view.addSubview(logoImageView)
+        
+        logoImageView.m_center |=| view.m_center
+        logoImageView.m_size |=| 250
+    }
 
 }

@@ -12,6 +12,10 @@ final class AppCoordinator {
     
     // MARK: - Instance Properties
     
+    private lazy var state: State = {
+        determineState()
+    }()
+    
     private var childCoordinator: Coordinator?
     
     
@@ -35,13 +39,39 @@ final class AppCoordinator {
         return didStartSubFlow()
     }
     
+    private func determineState() -> State {
+        return .auth
+    }
+    
     private func didStartSubFlow() -> Bool {
-        let sessionTabBarController = UITabBarController()
-        let sessionCoordinator = SessionCoordinator(rootViewController: sessionTabBarController)
-        childCoordinator = sessionCoordinator
-        sessionCoordinator.start()
-        window.rootViewController = sessionTabBarController
+        var rootViewController: UIViewController
+        
+        switch state {
+        case .auth:
+            let navigationController = UINavigationController()
+            let authCoordinator = AuthCoordinator(rootViewController: navigationController)
+            childCoordinator = authCoordinator
+            authCoordinator.start()
+            rootViewController = navigationController
+            
+        case .session(let user):
+            let tabBarController = UITabBarController()
+            let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, currentUser: user)
+            childCoordinator = sessionCoordinator
+            sessionCoordinator.start()
+            rootViewController = tabBarController
+        }
+        
+        window.rootViewController?.present(rootViewController, animated: true)
+        
         return true
     }
     
+}
+
+extension AppCoordinator {
+    enum State {
+        case auth
+        case session(User)
+    }
 }
