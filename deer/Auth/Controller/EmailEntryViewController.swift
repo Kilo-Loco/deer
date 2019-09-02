@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 final class EmailEntryViewController: UIViewController {
 
@@ -40,5 +41,7 @@ final class EmailEntryViewController: UIViewController {
     
     override func loadView() {
         view = mainView
+        let user = User(email: try! Email("kyle@gmail.com"))
+//        mainView.deerLabel.reac
     }
 }

@@ -6,6 +6,7 @@ target 'deer' do
   use_frameworks!
 
   pod 'Moya/ReactiveSwift', '~> 13.0'
+  pod 'ReactiveCocoa', '~> 9.0'
   pod 'Swinject'
   pod 'Mortar'
   pod 'KeychainAccess'

@@ -14,6 +14,7 @@
 		9E2FC40C231CF6140093E858 /* AuthCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FC40B231CF6140093E858 /* AuthCoordinatorInterface.swift */; };
 		9E2FC40F231CF8490093E858 /* SessionCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FC40E231CF8490093E858 /* SessionCoordinatorInterface.swift */; };
 		9E2FC411231CFA4F0093E858 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FC410231CFA4F0093E858 /* UserInterface.swift */; };
+		9E2FC413231D0C150093E858 /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FC412231D0C150093E858 /* KeyboardService.swift */; };
 		9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EA231B3D250084A38C /* AppDelegate.swift */; };
 		9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */; };
 		9E6CA5F5231B3D260084A38C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F4231B3D260084A38C /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		9E2FC40B231CF6140093E858 /* AuthCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorInterface.swift; sourceTree = "<group>"; };
 		9E2FC40E231CF8490093E858 /* SessionCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoordinatorInterface.swift; sourceTree = "<group>"; };
 		9E2FC410231CFA4F0093E858 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
+		9E2FC412231D0C150093E858 /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
 		9E6CA5E7231B3D250084A38C /* deer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = deer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6CA5EA231B3D250084A38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6CA5F2231B3D250084A38C /* deer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deer.xcdatamodel; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				9E6CA615231C74800084A38C /* CoreDataService.swift */,
 				9E6CA5FF231B41D90084A38C /* Slate.swift */,
 				9E2FC407231CF2DC0093E858 /* MainFactory.swift */,
+				9E2FC412231D0C150093E858 /* KeyboardService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				9E6CA630231C82470084A38C /* UITabBarControllerExtensions.swift in Sources */,
 				9E6CA639231C85AA0084A38C /* EmailEntryView.swift in Sources */,
 				9E2FC408231CF2DC0093E858 /* MainFactory.swift in Sources */,
+				9E2FC413231D0C150093E858 /* KeyboardService.swift in Sources */,
 				9E6CA643231CA8530084A38C /* Email.swift in Sources */,
 				9E6CA628231C7B8C0084A38C /* MapCoordinator.swift in Sources */,
 				9E6CA622231C79930084A38C /* Coordinator.swift in Sources */,
