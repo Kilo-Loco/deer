@@ -11,7 +11,9 @@ import Cartography
 
 final class EmailEntryView: UIView {
     
-    // MARK: - Subviews
+    // MARK: - Instance Properties
+    
+    // MARK: SubViews
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -57,6 +59,14 @@ final class EmailEntryView: UIView {
         return button
     }()
     
+    // MARK: Constraints
+    
+    private let brandStackViewYAxisConstraintGroup = ConstraintGroup()
+    private let continueButtonBottomConstraintGroup = ConstraintGroup()
+    
+    
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -65,6 +75,9 @@ final class EmailEntryView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    // MARK: - Setup
     
     private func setup() {
         backgroundColor = .white
@@ -78,6 +91,9 @@ final class EmailEntryView: UIView {
         
         constrain(brandStackView, self) {
             $0.centerX == $1.centerX
+        }
+        
+        constrain(brandStackView, self, replace: brandStackViewYAxisConstraintGroup) {
             $0.centerY == $1.centerY - 100
         }
         
@@ -96,8 +112,29 @@ final class EmailEntryView: UIView {
         constrain(continueButton, layoutMarginsGuide) {
             $0.leading == $1.leading + 20
             $0.trailing == $1.trailing - 20
-            $0.bottom == $1.bottom - 20
             $0.height == 45
         }
+        
+        constrain(continueButton, layoutMarginsGuide, replace: continueButtonBottomConstraintGroup) {
+            $0.bottom == $1.bottom - 20
+        }
+    }
+    
+    
+    // MARK: - Events
+    
+    func handleKeyboard(with height: CGFloat) {
+        constrain(continueButton, layoutMarginsGuide, replace: continueButtonBottomConstraintGroup) {
+            $0.bottom == $1.bottom - height
+        }
+        constrain(brandStackView, self, replace: brandStackViewYAxisConstraintGroup) {
+            if height > 100 {
+                $0.top == $1.layoutMarginsGuide.top
+            } else {
+                $0.centerY == $1.centerY - 100
+            }
+        }
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in self?.layoutIfNeeded() }
     }
 }

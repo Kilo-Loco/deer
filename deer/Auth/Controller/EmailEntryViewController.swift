@@ -60,6 +60,6 @@ final class EmailEntryViewController: UIViewController {
     // MARK: - Events
     
     private func handle(_ keyboardFrame: CGRect) {
-        print("keyboard frame:", keyboardFrame)
+        mainView.handleKeyboard(with: keyboardFrame.height)
     }
 }
