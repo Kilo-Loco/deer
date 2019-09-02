@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mortar
+import Cartography
 
 final class EmailEntryView: UIView {
     
@@ -76,18 +76,28 @@ final class EmailEntryView: UIView {
         addSubview(emailTextField)
         addSubview(continueButton)
         
-        brandStackView.m_centerX |=| m_centerX
-        brandStackView.m_centerY |=| m_centerY - 100
-        logoImageView.m_size |=| 100
+        constrain(brandStackView, self) {
+            $0.centerX == $1.centerX
+            $0.centerY == $1.centerY - 100
+        }
         
-        emailTextField.m_leading |=| layoutMarginsGuide.m_leading + 20
-        emailTextField.m_trailing |=| layoutMarginsGuide.m_trailing - 20
-        emailTextField.m_bottom |=| continueButton.m_top - 100
-        emailTextField.m_height |=| 35
+        constrain(logoImageView) {
+            $0.width == 100
+            $0.height == 100
+        }
         
-        continueButton.m_leading |=| layoutMarginsGuide.m_leading + 20
-        continueButton.m_trailing |=| layoutMarginsGuide.m_trailing - 20
-        continueButton.m_bottom |=| layoutMarginsGuide.m_bottom - 20
-        continueButton.m_height |=| 45
+        constrain(emailTextField, layoutMarginsGuide, continueButton) {
+            $0.leading == $1.leading + 20
+            $0.trailing == $1.trailing - 20
+            $0.bottom == $2.top - 100
+            $0.height == 35
+        }
+        
+        constrain(continueButton, layoutMarginsGuide) {
+            $0.leading == $1.leading + 20
+            $0.trailing == $1.trailing - 20
+            $0.bottom == $1.bottom - 20
+            $0.height == 45
+        }
     }
 }

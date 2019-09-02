@@ -9,6 +9,7 @@ target 'deer' do
   pod 'ReactiveCocoa', '~> 9.0'
   pod 'Swinject'
   pod 'Mortar'
+  pod 'Cartography', '~> 3.0'
   pod 'KeychainAccess'
 
   # Pods for deer
