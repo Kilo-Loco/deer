@@ -18,6 +18,7 @@ final class ScooterMapView: UIView {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.showsUserLocation = true
+//        mapView.register(ScooterAnnotation.self, forAnnotationViewWithReuseIdentifier: ScooterAnnotation.identifier)
         return mapView
     }()
     

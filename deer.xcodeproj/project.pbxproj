@@ -33,6 +33,7 @@
 		9E2FCAF4231E60560093E858 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF3231E60560093E858 /* MapFactory.swift */; };
 		9E2FCAF6231E64EE0093E858 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF5231E64EE0093E858 /* LocationService.swift */; };
 		9E2FCAF9231E680D0093E858 /* ScooterMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF8231E680D0093E858 /* ScooterMapViewModel.swift */; };
+		9E2FCAFB231E7D8A0093E858 /* ScooterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAFA231E7D8A0093E858 /* ScooterAnnotation.swift */; };
 		9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EA231B3D250084A38C /* AppDelegate.swift */; };
 		9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */; };
 		9E6CA5F5231B3D260084A38C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F4231B3D260084A38C /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		9E2FCAF3231E60560093E858 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
 		9E2FCAF5231E64EE0093E858 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		9E2FCAF8231E680D0093E858 /* ScooterMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterMapViewModel.swift; sourceTree = "<group>"; };
+		9E2FCAFA231E7D8A0093E858 /* ScooterAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterAnnotation.swift; sourceTree = "<group>"; };
 		9E6CA5E7231B3D250084A38C /* deer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = deer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6CA5EA231B3D250084A38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6CA5F2231B3D250084A38C /* deer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deer.xcdatamodel; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				9E2FC403231CD7C80093E858 /* ScooterMapView.swift */,
+				9E2FCAFA231E7D8A0093E858 /* ScooterAnnotation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				9E2FCAE4231E353A0093E858 /* PersistenceServiceInterface.swift in Sources */,
 				9E2FC408231CF2DC0093E858 /* MainFactory.swift in Sources */,
 				9E2FCAF6231E64EE0093E858 /* LocationService.swift in Sources */,
+				9E2FCAFB231E7D8A0093E858 /* ScooterAnnotation.swift in Sources */,
 				9E2FCAF2231E53A50093E858 /* SlateScooter.swift in Sources */,
 				9E2FC413231D0C150093E858 /* KeyboardService.swift in Sources */,
 				9E6CA643231CA8530084A38C /* Email.swift in Sources */,

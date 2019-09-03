@@ -10,6 +10,7 @@ import Foundation
 import ReactiveSwift
 import Result
 import CoreLocation
+import MapKit
 
 final class ScooterMapViewModel {
     
@@ -17,6 +18,7 @@ final class ScooterMapViewModel {
     
     let (locationSignal, locationObserver) = Signal<CLLocation, NoError>.pipe()
     let scootersProperty = MutableProperty<[SlateScooter]>([])
+    let annotationsProperty = MutableProperty<[ScooterAnnotation]>([])
     
     
     // MARK: - Injected Properties
@@ -44,7 +46,16 @@ final class ScooterMapViewModel {
                 self?.locationObserver.send(value: location)
         }
         
-        scootersProperty <~ dataStore.scootersProperty
+        annotationsProperty <~ dataStore.scootersProperty.map { scooters in
+            let annotations: [ScooterAnnotation] = scooters.map {
+                let annotation = ScooterAnnotation()
+                annotation.title = $0.name
+                annotation.coordinate = CLLocationCoordinate2D(latitude: $0.location.latitude,
+                                                               longitude: $0.location.longitude)
+                return annotation
+            }
+            return annotations
+        }
     }
     
     

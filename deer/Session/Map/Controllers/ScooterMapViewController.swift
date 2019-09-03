@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 final class ScooterMapViewController: UIViewController {
 
@@ -38,7 +39,7 @@ final class ScooterMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupObservers()
+        setup()
         viewModel.getScooters()
     }
     
@@ -47,6 +48,10 @@ final class ScooterMapViewController: UIViewController {
         viewModel.requestLocation()
     }
     
+    private func setup() {
+        mainView.mapView.delegate = self
+        setupObservers()
+    }
     
     private func setupObservers() {
         viewModel.locationSignal.observeValues { [weak self] location in
@@ -56,8 +61,11 @@ final class ScooterMapViewController: UIViewController {
             let birdOfficeCoordinates = CLLocationCoordinate2D(latitude: 34.0301, longitude: -118.4728)
             self?.panCamera(to: birdOfficeCoordinates)
         }
-        viewModel.scootersProperty.producer.startWithValues { (scooters) in
-            print("vc scooters", scooters)
+        
+        viewModel.annotationsProperty.producer.startWithValues { [weak self] annotations in
+            DispatchQueue.main.async {
+                self?.mainView.mapView.addAnnotations(annotations)
+            }
         }
     }
     
@@ -66,5 +74,24 @@ final class ScooterMapViewController: UIViewController {
         camera.centerCoordinate = coordinates
         camera.altitude = 1000
         camera.pitch = 45
+    }
+}
+
+extension ScooterMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let scooterAnnotation = annotation as? ScooterAnnotation else { return nil }
+        
+        let identifier = ScooterAnnotation.identifier
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: scooterAnnotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = scooterAnnotation
+        }
+        
+        annotationView!.image = scooterAnnotation.scooterImage
+        return annotationView
     }
 }
