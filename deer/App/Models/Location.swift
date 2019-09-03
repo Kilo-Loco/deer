@@ -46,3 +46,12 @@ struct Location: Codable {
     let latitude: Double
     let longitude: Double
 }
+
+extension Location: CustomStringConvertible {
+    var description: String {
+        return """
+        lat: \(latitude)
+        lon: \(longitude)
+        """
+    }
+}

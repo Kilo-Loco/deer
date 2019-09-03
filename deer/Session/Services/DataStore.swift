@@ -14,7 +14,7 @@ final class DataStore: DataStoreInterface {
     
     // MARK: - Communication
     
-    let (scootersSignal, scootersObserver) = Signal<[SlateScooter], NoError>.pipe()
+    let scootersProperty = MutableProperty<[SlateScooter]>([])
     
     
     // MARK: - Injected Properties
@@ -56,7 +56,7 @@ final class DataStore: DataStoreInterface {
     
     private func save(_ scooters: [Scooter.JSONScooter]) {
         persistence.scootersSignal.observeValues { [weak self] slateScooters in
-            self?.scootersObserver.send(value: slateScooters)
+            self?.scootersProperty.value = slateScooters
         }
         persistence.save(scooters)
     }

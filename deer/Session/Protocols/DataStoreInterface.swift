@@ -11,8 +11,7 @@ import ReactiveSwift
 import Result
 
 protocol DataStoreInterface {
-    var scootersSignal: Signal<[SlateScooter], NoError> { get }
-    var scootersObserver: Signal<[SlateScooter], NoError>.Observer { get }
+    var scootersProperty: MutableProperty<[SlateScooter]> { get }
     var networking: NetworkingServiceInterface { get }
     var persistence: PersistenceServiceInterface { get }
     func getScooters()

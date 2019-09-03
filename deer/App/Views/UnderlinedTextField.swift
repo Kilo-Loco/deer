@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mortar
+import Cartography
 
 class UnderlinedTextField: UITextField {
 
@@ -38,9 +38,11 @@ class UnderlinedTextField: UITextField {
     private func setup() {
         addSubview(underlineView)
         
-        underlineView.m_leading |=| m_leading
-        underlineView.m_trailing |=| m_trailing
-        underlineView.m_bottom |=| m_bottom
-        underlineView.m_height |=| 1
+        constrain(underlineView, self) {
+            $0.leading == $1.leading
+            $0.trailing == $1.trailing
+            $0.bottom == $1.bottom
+            $0.height == 1
+        }
     }
 }

@@ -126,3 +126,17 @@ extension SlateScooter: Encodable {
     }
 }
 
+extension SlateScooter: CustomStringConvertible {
+    public var description: String {
+        return """
+        
+        id: \(id)
+        name: \(name)
+        location:
+            lat: \(location.latitude)
+            lon: \(location.longitude)
+        
+        """
+    }
+}
+

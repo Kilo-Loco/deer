@@ -13,13 +13,13 @@ final class SessionCoordinator: SessionCoordinatorInterface {
     // MARK: - Instance Properties
     
     private var childCoordinators = [Coordinator]()
-    private var dataStore: DataStoreInterface?
     
     
     // MARK: Injected Properties
     
     let rootViewController: UITabBarController
     let factory: SessionFactory
+    let dataStore: DataStoreInterface
     
     
     // MARK: - Initializer
@@ -28,25 +28,20 @@ final class SessionCoordinator: SessionCoordinatorInterface {
         rootViewController.tabBar.tintColor = .black
         self.rootViewController = rootViewController
         self.factory = factory
+        self.dataStore = factory.dataStore
     }
     
     
     // MARK: - Setup
     
     func start() {
+        dataStore.getScooters()
+        
         let mapCoordinator = factory.mapCoordinator
         let listCoordinator = factory.listCoordinator
         
         childCoordinators = [mapCoordinator, listCoordinator]
         childCoordinators.start()
-        
-        dataStore = factory.dataStore
-        
-        dataStore?.scootersSignal.observeValues { scooters in
-            print(scooters)
-        }
-        
-        dataStore?.getScooters()
     }
     
     

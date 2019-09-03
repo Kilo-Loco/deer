@@ -10,23 +10,33 @@ import UIKit
 
 final class MapCoordinator: Coordinator {
     
-    private let rootViewController: UINavigationController
+    // MARK: - Injected Properties
     
-    init(in tabBarController: UITabBarController) {
+    private let rootViewController: UINavigationController
+    private let factory: MapFactory
+    
+    
+    // MARK: - Initializer
+    
+    init(in tabBarController: UITabBarController, factory: MapFactory) {
         rootViewController = UINavigationController()
+        self.factory = factory
+        
         rootViewController.tabBarItem.image = UIImage(named: "mapIcon")
         tabBarController.append(rootViewController)
     }
+    
+    
+    // MARK: Lifecycle
     
     func start() {
         showScooterMapViewController()
     }
     
+    
+    // MARK: - Flows
+    
     private func showScooterMapViewController() {
-        
-        let scooterMapVC = ScooterMapViewController()
-        scooterMapVC.title = "Map"
-        scooterMapVC.navigationItem.title = "d e e r"
-        rootViewController.pushViewController(scooterMapVC, animated: false)
+        rootViewController.pushViewController(factory.scooterMapVC, animated: false)
     }
 }

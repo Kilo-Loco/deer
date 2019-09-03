@@ -52,8 +52,13 @@ final class SessionFactory {
         
         let tabBarController = container.resolve(UITabBarController.self)!
         
-        container.register(MapCoordinator.self) { [unowned tabBarController] _ in
-            return MapCoordinator(in: tabBarController)
+        container.register(MapFactory.self) { [unowned self] _ in
+            return MapFactory(container: self.container)
+        }
+        
+        container.register(MapCoordinator.self) { [unowned tabBarController] r in
+            let factory = r.resolve(MapFactory.self)!
+            return MapCoordinator(in: tabBarController, factory: factory)
         }
         
         container.register(ListCoordinator.self) { [unowned tabBarController] _ in
@@ -74,6 +79,5 @@ final class SessionFactory {
             let persistence = r.resolve(PersistenceServiceInterface.self)!
             return DataStore(networking: networking, persistence: persistence)
         }
-        
     }
 }

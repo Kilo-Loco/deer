@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mortar
+import Cartography
 import MapKit
 
 final class ScooterMapView: UIView {
@@ -49,10 +49,19 @@ final class ScooterMapView: UIView {
         addSubview(mapView)
         addSubview(rideButton)
         
-        mapView |=| self
-        rideButton.m_bottom |=| layoutMarginsGuide.m_bottom - 20
-        rideButton.m_size |=| 100
-        rideButton.m_centerX |=| m_centerX
+        constrain(mapView, self) {
+            $0.top == $1.top
+            $0.leading == $1.leading
+            $0.trailing == $1.trailing
+            $0.bottom == $1.bottom
+        }
+        
+        constrain(rideButton, self) {
+            $0.centerX == $1.centerX
+            $0.bottom == $1.layoutMarginsGuide.bottom - 20
+            $0.width == 100
+            $0.height == 100
+        }
     }
 }
 
