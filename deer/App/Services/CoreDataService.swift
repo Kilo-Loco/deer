@@ -11,6 +11,8 @@ import CoreData
 
 final class CoreDataService: PersistenceServiceInterface {
     
+    private lazy var context = persistentContainer.viewContext
+    
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "deer")
@@ -28,7 +30,6 @@ final class CoreDataService: PersistenceServiceInterface {
     // MARK: - Core Data Saving support
     
     func saveContext () {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -42,5 +43,13 @@ final class CoreDataService: PersistenceServiceInterface {
     
     func save(_ scooters: [Scooter.JSONScooter]) {
         
+        for scooter in scooters {
+            let mocScooter = Scooter(context: context)
+            mocScooter.id = scooter.id
+            mocScooter.name = scooter.name
+            mocScooter.location = scooter.location
+        }
+        
+        saveContext()
     }
 }

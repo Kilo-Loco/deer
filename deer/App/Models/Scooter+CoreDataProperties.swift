@@ -25,7 +25,7 @@ extension Scooter {
 
 extension Scooter {
     struct JSONScooter: Decodable {
-        let id: String?
+        let id: String
         let name: String
         let location: Location
     }
