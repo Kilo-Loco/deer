@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataService {
+final class CoreDataService: PersistenceServiceInterface {
     
     lazy var persistentContainer: NSPersistentContainer = {
         

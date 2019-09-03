@@ -44,11 +44,15 @@ extension Scooter {
 public struct SlateScooter: SlateObject {
 
     // -- Attribute Declarations --
+    public let id: String?
+    public let location: Location
     public let name: String
 
     // -- Attribute Names --
 
     public struct Attributes {
+        public static let id = "id"
+        public static let location = "location"
         public static let name = "name"
 
     }
@@ -74,6 +78,8 @@ public struct SlateScooter: SlateObject {
         self.slateID = managedObject.objectID
 
         // Attribute assignment
+        self.id = managedObject.id
+        self.location = { let t: Location? = managedObject.location; return t! }()
         self.name = { let t: String? = managedObject.name; return t! }()
 
     }
@@ -87,10 +93,20 @@ public extension SlateRelationshipResolver where SO == SlateScooter {
 
 }
 
-extension SlateScooter: Equatable {
-    public static func ==(lhs: SlateScooter, rhs: SlateScooter) -> Bool {
-        return (lhs.slateID == rhs.slateID) &&
-               (lhs.name == rhs.name)
+extension SlateScooter: Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case location
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        if let id = self.id {
+            try container.encode(id, forKey: .id)
+        }
+        try container.encode(name, forKey: .name)
+        try container.encode(location, forKey: .location)
     }
 }
 

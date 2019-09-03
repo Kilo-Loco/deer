@@ -67,10 +67,14 @@ final class MainFactory {
             return authCoordinator
         }
         
-        container.register(SessionCoordinatorInterface.self) { r in
-            let tabBarController = UITabBarController()
-            let currentUser = r.resolve(UserInterface.self)!
-            let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, currentUser: currentUser)
+        container.register(UITabBarController.self) { _ in
+            UITabBarController()
+        }
+        
+        container.register(SessionCoordinatorInterface.self) { [unowned self] r in
+            let tabBarController = r.resolve(UITabBarController.self)!
+            let sessionFactory = SessionFactory(container: self.container)
+            let sessionCoordinator = SessionCoordinator(rootViewController: tabBarController, factory: sessionFactory)
             return sessionCoordinator
         }
     }

@@ -15,7 +15,6 @@ final class MapCoordinator: Coordinator {
     init(in tabBarController: UITabBarController) {
         rootViewController = UINavigationController()
         rootViewController.tabBarItem.image = UIImage(named: "mapIcon")
-//        tabBarController.
         tabBarController.append(rootViewController)
     }
     

@@ -18,23 +18,23 @@ final class SessionCoordinator: SessionCoordinatorInterface {
     // MARK: Injected Properties
     
     let rootViewController: UITabBarController
-    let currentUser: UserInterface
+    let factory: SessionFactory
     
     
     // MARK: - Initializer
     
-    init(rootViewController: UITabBarController = .init(), currentUser: UserInterface) {
+    init(rootViewController: UITabBarController = .init(), factory: SessionFactory) {
         rootViewController.tabBar.tintColor = .black
         self.rootViewController = rootViewController
-        self.currentUser = currentUser
+        self.factory = factory
     }
     
     
     // MARK: - Setup
     
     func start() {
-        let mapCoordinator = MapCoordinator(in: rootViewController)
-        let listCoordinator = ListCoordinator(in: rootViewController)
+        let mapCoordinator = factory.mapCoordinator
+        let listCoordinator = factory.listCoordinator
         
         childCoordinators = [mapCoordinator, listCoordinator]
         childCoordinators.start()

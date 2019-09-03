@@ -10,5 +10,5 @@ import UIKit
 
 protocol SessionCoordinatorInterface: Coordinator {
     var rootViewController: UITabBarController { get }
-    var currentUser: UserInterface { get }
+    var factory: SessionFactory { get }
 }

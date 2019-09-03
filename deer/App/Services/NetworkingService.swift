@@ -16,12 +16,13 @@ final class NetworkingService: NetworkingServiceInterface {
     // MARK: - Injected Properties
     
     let authProvider: MoyaProvider<AuthService>
+    let scooterProvider: MoyaProvider<ScooterService>
     
     
     // MARK: - Initializers
     
-    init(authProvider: MoyaProvider<AuthService> = .init()) {
+    init(authProvider: MoyaProvider<AuthService> = .init(), scooterProvider: MoyaProvider<ScooterService> = .init()) {
         self.authProvider = authProvider
+        self.scooterProvider = scooterProvider
     }
-    
 }
