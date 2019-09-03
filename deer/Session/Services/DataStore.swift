@@ -12,4 +12,9 @@ final class DataStore: DataStoreInterface {
     
     let networking: NetworkingServiceInterface
     let persistence: PersistenceServiceInterface
+    
+    init(networking: NetworkingServiceInterface, persistence: PersistenceServiceInterface) {
+        self.networking = networking
+        self.persistence = persistence
+    }
 }
