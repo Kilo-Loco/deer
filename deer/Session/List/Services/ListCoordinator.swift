@@ -13,12 +13,14 @@ final class ListCoordinator: Coordinator {
     // MARK: - Injected Properties
     
     private let rootViewController: UINavigationController
+    private let factory: ListFactory
     
     
     // MARK: - Initializers
     
-    init(in tabBarController: UITabBarController) {
+    init(in tabBarController: UITabBarController, factory: ListFactory) {
         rootViewController = UINavigationController()
+        self.factory = factory
         rootViewController.tabBarItem.image = UIImage(named: "listIcon")
         tabBarController.append(rootViewController)
     }
@@ -31,9 +33,6 @@ final class ListCoordinator: Coordinator {
     }
     
     private func showScooterListViewController() {
-        let scooterListVC = ScooterListViewController()
-        scooterListVC.title = "List"
-        scooterListVC.navigationItem.title = "d e e r"
-        rootViewController.pushViewController(scooterListVC, animated: false)
+        rootViewController.pushViewController(factory.scooterListVC, animated: false)
     }
 }

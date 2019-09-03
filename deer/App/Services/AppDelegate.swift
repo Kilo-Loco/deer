@@ -19,11 +19,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator = AppCoordinator()
         return coordinator.didFinishLaunching()
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        
-//        self.saveContext()
-    }
-
 }
 

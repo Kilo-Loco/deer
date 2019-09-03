@@ -21,10 +21,6 @@ final class SessionFactory {
         return container.resolve(NetworkingServiceInterface.self)!
     }
     
-    var dataStore: DataStoreInterface {
-        return container.resolve(DataStoreInterface.self)!
-    }
-    
     var mapCoordinator: MapCoordinator {
         return container.resolve(MapCoordinator.self)!
     }
@@ -50,21 +46,6 @@ final class SessionFactory {
     
     private func registerDependencies() {
         
-        let tabBarController = container.resolve(UITabBarController.self)!
-        
-        container.register(MapFactory.self) { [unowned self] _ in
-            return MapFactory(container: self.container)
-        }
-        
-        container.register(MapCoordinator.self) { [unowned tabBarController] r in
-            let factory = r.resolve(MapFactory.self)!
-            return MapCoordinator(in: tabBarController, factory: factory)
-        }
-        
-        container.register(ListCoordinator.self) { [unowned tabBarController] _ in
-            return ListCoordinator(in: tabBarController)
-        }
-        
         container.register(Slate.self) { _ in
             return Slate()
         }
@@ -79,5 +60,28 @@ final class SessionFactory {
             let persistence = r.resolve(PersistenceServiceInterface.self)!
             return DataStore(networking: networking, persistence: persistence)
         }
+        
+        let tabBarController = container.resolve(UITabBarController.self)!
+        let dataStore = container.resolve(DataStoreInterface.self)!
+        
+        container.register(MapFactory.self) { [unowned self] _ in
+            return MapFactory(container: self.container, dataStore: dataStore)
+        }
+        
+        container.register(MapCoordinator.self) { [unowned tabBarController] r in
+            let factory = r.resolve(MapFactory.self)!
+            return MapCoordinator(in: tabBarController, factory: factory)
+        }
+        
+        container.register(ListFactory.self) { [unowned self] _ in
+            return ListFactory(container: self.container, dataStore: dataStore)
+        }
+        
+        container.register(ListCoordinator.self) { [unowned tabBarController] r in
+            let factory = r.resolve(ListFactory.self)!
+            return ListCoordinator(in: tabBarController, factory: factory)
+        }
+        
+        
     }
 }

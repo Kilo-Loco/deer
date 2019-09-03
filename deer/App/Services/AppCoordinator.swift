@@ -43,7 +43,6 @@ final class AppCoordinator {
     }
     
     private func determineState() -> State {
-//        factory.keychain["userData"] = nil
         do {
             let userData = try factory.keychain.getData("userData") ?? Data()
             let user = try JSONDecoder().decode(User.self, from: userData)

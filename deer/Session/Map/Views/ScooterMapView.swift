@@ -28,6 +28,7 @@ final class ScooterMapView: UIView {
         button.setTitle("RIDE", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .brandPurple
+        button.isHidden = true
         return button
     }()
     

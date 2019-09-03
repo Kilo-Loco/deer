@@ -13,10 +13,6 @@ final class MapFactory {
     
     // MARK: - Instance Properties
     
-    var dataStore: DataStoreInterface {
-        return container.resolve(DataStoreInterface.self)!
-    }
-    
     var scooterMapVC: ScooterMapViewController {
         return container.resolve(ScooterMapViewController.self)!
     }
@@ -25,12 +21,14 @@ final class MapFactory {
     // MARK: Injected Properties
     
     private let container: Container
+    let dataStore: DataStoreInterface
     
     
     // MARK: - Initializer
     
-    init(container: Container = .init()) {
+    init(container: Container = .init(), dataStore: DataStoreInterface) {
         self.container = container
+        self.dataStore = dataStore
         registerDependencies()
     }
     
