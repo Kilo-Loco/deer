@@ -12,10 +12,6 @@ import ReactiveCocoa
 
 final class EmailEntryViewController: UIViewController {
 
-    // MARK: - Communication
-    
-//    var didProvideUser: ((UserInterface) -> Void)?
-    
     
     // MARK: - Injected Properties
     
@@ -53,6 +49,17 @@ final class EmailEntryViewController: UIViewController {
     private func setupObservations() {
         viewModel.keyboardService.keyboardSignal.observeValues { [weak self] keyboardFrame in
             self?.handle(keyboardFrame)
+        }
+        mainView.emailTextField.reactive
+            .continuousTextValues
+            .observeValues { [weak self] email in
+                guard let strongSelf = self else { return }
+                let isValidEmail = Email.isValid(email)
+                strongSelf.mainView.continueButton.alpha = isValidEmail ? 1 : 0.5
+                strongSelf.mainView.continueButton.isEnabled = isValidEmail
+                
+                strongSelf.mainView.continueButton.reactive
+                    .pressed = CocoaAction(strongSelf.viewModel.loginAction, input: email)
         }
     }
     

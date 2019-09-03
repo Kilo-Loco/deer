@@ -18,11 +18,14 @@ struct Email: Codable {
 
 extension Email {
     
-    static func validate(_ value: String) throws -> String {
+    static func isValid(_ value: String) -> Bool {
         let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
         let match = NSPredicate(format:"SELF MATCHES %@", regEx)
-        guard match.evaluate(with: value) else { throw Error.invalid }
+        return match.evaluate(with: value)
+    }
+    
+    static func validate(_ value: String) throws -> String {
+        guard Email.isValid(value) else { throw Error.invalid }
         return value
     }
     

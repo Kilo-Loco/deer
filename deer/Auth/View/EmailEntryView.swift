@@ -56,6 +56,8 @@ final class EmailEntryView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .brandPurple
         button.layer.cornerRadius = 5
+        button.alpha = 0.5
+        button.isEnabled = false
         return button
     }()
     
