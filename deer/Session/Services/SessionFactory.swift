@@ -21,6 +21,10 @@ final class SessionFactory {
         return container.resolve(NetworkingServiceInterface.self)!
     }
     
+    var dataStore: DataStoreInterface {
+        return container.resolve(DataStoreInterface.self)!
+    }
+    
     var mapCoordinator: MapCoordinator {
         return container.resolve(MapCoordinator.self)!
     }
@@ -52,8 +56,23 @@ final class SessionFactory {
             return MapCoordinator(in: tabBarController)
         }
         
-        container.register(ListCoordinator.self){ [unowned tabBarController] _ in
+        container.register(ListCoordinator.self) { [unowned tabBarController] _ in
             return ListCoordinator(in: tabBarController)
+        }
+        
+        container.register(Slate.self) { _ in
+            return Slate()
+        }
+        
+        container.register(PersistenceServiceInterface.self) { r in
+            let slate = r.resolve(Slate.self)!
+            return CoreDataService(slate: slate)
+        }
+        
+        container.register(DataStoreInterface.self) { r in
+            let networking = r.resolve(NetworkingServiceInterface.self)!
+            let persistence = r.resolve(PersistenceServiceInterface.self)!
+            return DataStore(networking: networking, persistence: persistence)
         }
         
     }

@@ -2,7 +2,7 @@
 //  Scooter+CoreDataProperties.swift
 //  deer
 //
-//  Created by Kyle Lee on 9/2/19.
+//  Created by Kyle Lee on 9/3/19.
 //  Copyright © 2019 Kilo Loco. All rights reserved.
 //
 //
@@ -18,8 +18,9 @@ extension Scooter {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var id: String?
-    @NSManaged public var location: Location
+    @NSManaged public var id: String
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
 
 }
 

@@ -8,8 +8,18 @@
 
 import Foundation
 import CoreData
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 final class CoreDataService: PersistenceServiceInterface {
+    
+    // MARK: - Communication
+    
+    let (scootersSignal, scootersObserver) = Signal<[SlateScooter], NoError>.pipe()
+    
+    
+    // MARK: - Instance Properties
     
     private lazy var context = persistentContainer.viewContext
     
@@ -27,12 +37,41 @@ final class CoreDataService: PersistenceServiceInterface {
         return container
     }()
     
-    // MARK: - Core Data Saving support
+    
+    // MARK: Injected Properties
+    
+    let slate: Slate
+    
+    
+    // MARK: - Initializer
+    
+    init(slate: Slate = .init()) {
+        self.slate = slate
+        setup()
+    }
+    
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        let container = persistentContainer
+        slate.configure(managedObjectModel: container.managedObjectModel,
+                        persistentStoreDescription: container.persistentStoreDescriptions.last!) {
+                            if let error = $1 {
+                                print(error)
+                            } else {
+                                print("Slate configured with", $0)
+                            }
+        }
+    }
+    
+    // MARK: - Events
     
     func saveContext () {
         if context.hasChanges {
             do {
                 try context.save()
+                getScooters()
             } catch {
                 
                 let nserror = error as NSError
@@ -42,14 +81,25 @@ final class CoreDataService: PersistenceServiceInterface {
     }
     
     func save(_ scooters: [Scooter.JSONScooter]) {
-        
         for scooter in scooters {
             let mocScooter = Scooter(context: context)
             mocScooter.id = scooter.id
             mocScooter.name = scooter.name
-            mocScooter.location = scooter.location
+            mocScooter.latitude = scooter.location.latitude
+            mocScooter.longitude = scooter.location.longitude
         }
         
         saveContext()
+    }
+    
+    func getScooters() {
+        slate.queryAsync { [weak self] context in
+            let scooters: [SlateScooter] = try context[SlateScooter.self].fetch()
+            self?.scootersObserver.send(value: scooters)
+            
+        }.catch { error in
+            print(error)
+        }
+        
     }
 }

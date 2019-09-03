@@ -44,15 +44,17 @@ extension Scooter {
 public struct SlateScooter: SlateObject {
 
     // -- Attribute Declarations --
-    public let id: String?
-    public let location: Location
+    public let id: String
+    public let latitude: Double?
+    public let longitude: Double?
     public let name: String
 
     // -- Attribute Names --
 
     public struct Attributes {
         public static let id = "id"
-        public static let location = "location"
+        public static let latitude = "latitude"
+        public static let longitude = "longitude"
         public static let name = "name"
 
     }
@@ -78,8 +80,9 @@ public struct SlateScooter: SlateObject {
         self.slateID = managedObject.objectID
 
         // Attribute assignment
-        self.id = managedObject.id
-        self.location = { let t: Location? = managedObject.location; return t! }()
+        self.id = { let t: String? = managedObject.id; return t! }()
+        self.latitude = managedObject.latitude
+        self.longitude = managedObject.longitude
         self.name = { let t: String? = managedObject.name; return t! }()
 
     }
@@ -93,7 +96,22 @@ public extension SlateRelationshipResolver where SO == SlateScooter {
 
 }
 
+extension SlateScooter: Equatable {
+    public static func ==(lhs: SlateScooter, rhs: SlateScooter) -> Bool {
+        return (lhs.slateID == rhs.slateID) &&
+               (lhs.id == rhs.id) &&
+               (lhs.latitude == rhs.latitude) &&
+               (lhs.longitude == rhs.longitude) &&
+               (lhs.name == rhs.name)
+    }
+}
+
 extension SlateScooter: Encodable {
+    
+    var location: Location {
+        return Location(latitude: latitude ?? 0, longitude: longitude ?? 0)
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -102,9 +120,7 @@ extension SlateScooter: Encodable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        if let id = self.id {
-            try container.encode(id, forKey: .id)
-        }
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(location, forKey: .location)
     }

@@ -23,13 +23,13 @@
 		9E2FCAAA231DF1F20093E858 /* NetworkingServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAA9231DF1F20093E858 /* NetworkingServiceInterface.swift */; };
 		9E2FCAAC231E17950093E858 /* ScooterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAAB231E17950093E858 /* ScooterService.swift */; };
 		9E2FCAD6231E24A70093E858 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAD5231E24A70093E858 /* Location.swift */; };
-		9E2FCAD9231E25F40093E858 /* Scooter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAD7231E25F40093E858 /* Scooter+CoreDataClass.swift */; };
-		9E2FCADA231E25F40093E858 /* Scooter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAD8231E25F40093E858 /* Scooter+CoreDataProperties.swift */; };
-		9E2FCADC231E26210093E858 /* SlateScooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCADB231E26200093E858 /* SlateScooter.swift */; };
 		9E2FCADE231E2BB20093E858 /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCADD231E2BB20093E858 /* SessionFactory.swift */; };
 		9E2FCAE0231E348E0093E858 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCADF231E348E0093E858 /* DataStore.swift */; };
 		9E2FCAE2231E34AD0093E858 /* DataStoreInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAE1231E34AD0093E858 /* DataStoreInterface.swift */; };
 		9E2FCAE4231E353A0093E858 /* PersistenceServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAE3231E353A0093E858 /* PersistenceServiceInterface.swift */; };
+		9E2FCAEF231E53440093E858 /* Scooter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAED231E53440093E858 /* Scooter+CoreDataClass.swift */; };
+		9E2FCAF0231E53440093E858 /* Scooter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAEE231E53440093E858 /* Scooter+CoreDataProperties.swift */; };
+		9E2FCAF2231E53A50093E858 /* SlateScooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF1231E53A50093E858 /* SlateScooter.swift */; };
 		9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EA231B3D250084A38C /* AppDelegate.swift */; };
 		9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */; };
 		9E6CA5F5231B3D260084A38C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F4231B3D260084A38C /* Assets.xcassets */; };
@@ -73,13 +73,13 @@
 		9E2FCAA9231DF1F20093E858 /* NetworkingServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceInterface.swift; sourceTree = "<group>"; };
 		9E2FCAAB231E17950093E858 /* ScooterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterService.swift; sourceTree = "<group>"; };
 		9E2FCAD5231E24A70093E858 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		9E2FCAD7231E25F40093E858 /* Scooter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9E2FCAD8231E25F40093E858 /* Scooter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9E2FCADB231E26200093E858 /* SlateScooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlateScooter.swift; sourceTree = "<group>"; };
 		9E2FCADD231E2BB20093E858 /* SessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFactory.swift; sourceTree = "<group>"; };
 		9E2FCADF231E348E0093E858 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9E2FCAE1231E34AD0093E858 /* DataStoreInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreInterface.swift; sourceTree = "<group>"; };
 		9E2FCAE3231E353A0093E858 /* PersistenceServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceServiceInterface.swift; sourceTree = "<group>"; };
+		9E2FCAED231E53440093E858 /* Scooter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9E2FCAEE231E53440093E858 /* Scooter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9E2FCAF1231E53A50093E858 /* SlateScooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlateScooter.swift; sourceTree = "<group>"; };
 		9E6CA5E7231B3D250084A38C /* deer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = deer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6CA5EA231B3D250084A38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6CA5F2231B3D250084A38C /* deer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deer.xcdatamodel; sourceTree = "<group>"; };
@@ -257,9 +257,9 @@
 		9E6CA618231C75050084A38C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9E2FCADB231E26200093E858 /* SlateScooter.swift */,
-				9E2FCAD7231E25F40093E858 /* Scooter+CoreDataClass.swift */,
-				9E2FCAD8231E25F40093E858 /* Scooter+CoreDataProperties.swift */,
+				9E2FCAF1231E53A50093E858 /* SlateScooter.swift */,
+				9E2FCAED231E53440093E858 /* Scooter+CoreDataClass.swift */,
+				9E2FCAEE231E53440093E858 /* Scooter+CoreDataProperties.swift */,
 				9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */,
 				9E6CA621231C79930084A38C /* Coordinator.swift */,
 				9E6CA640231CA8210084A38C /* User.swift */,
@@ -510,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E6CA62E231C7DE20084A38C /* ListCoordinator.swift in Sources */,
+				9E2FCAF0231E53440093E858 /* Scooter+CoreDataProperties.swift in Sources */,
 				9E6CA625231C7A8B0084A38C /* ArrayExtensions.swift in Sources */,
 				9E2FCAA4231DE7670093E858 /* NetworkingService.swift in Sources */,
 				9E2FC415231D6DCF0093E858 /* AuthFactory.swift in Sources */,
@@ -524,6 +525,7 @@
 				9E6CA610231C727E0084A38C /* AppCoordinator.swift in Sources */,
 				9E6CA635231C85800084A38C /* EmailEntryViewController.swift in Sources */,
 				9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */,
+				9E2FCAEF231E53440093E858 /* Scooter+CoreDataClass.swift in Sources */,
 				9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */,
 				9E2FCAD6231E24A70093E858 /* Location.swift in Sources */,
 				9E2FCADE231E2BB20093E858 /* SessionFactory.swift in Sources */,
@@ -532,11 +534,10 @@
 				9E6CA639231C85AA0084A38C /* EmailEntryView.swift in Sources */,
 				9E2FCAE4231E353A0093E858 /* PersistenceServiceInterface.swift in Sources */,
 				9E2FC408231CF2DC0093E858 /* MainFactory.swift in Sources */,
+				9E2FCAF2231E53A50093E858 /* SlateScooter.swift in Sources */,
 				9E2FC413231D0C150093E858 /* KeyboardService.swift in Sources */,
-				9E2FCADC231E26210093E858 /* SlateScooter.swift in Sources */,
 				9E6CA643231CA8530084A38C /* Email.swift in Sources */,
 				9E6CA628231C7B8C0084A38C /* MapCoordinator.swift in Sources */,
-				9E2FCAD9231E25F40093E858 /* Scooter+CoreDataClass.swift in Sources */,
 				9E2FCAA6231DED290093E858 /* AuthService.swift in Sources */,
 				9E6CA622231C79930084A38C /* Coordinator.swift in Sources */,
 				9E6CA63D231C9BF10084A38C /* UIColorExtensions.swift in Sources */,
@@ -546,7 +547,6 @@
 				9E2FCAE2231E34AD0093E858 /* DataStoreInterface.swift in Sources */,
 				9E2FC40F231CF8490093E858 /* SessionCoordinatorInterface.swift in Sources */,
 				9E2FCAAA231DF1F20093E858 /* NetworkingServiceInterface.swift in Sources */,
-				9E2FCADA231E25F40093E858 /* Scooter+CoreDataProperties.swift in Sources */,
 				9E2FC406231CDC700093E858 /* CircleButton.swift in Sources */,
 				9E6CA600231B41D90084A38C /* Slate.swift in Sources */,
 				9E6CA645231CBAFA0084A38C /* UIViewExtensions.swift in Sources */,

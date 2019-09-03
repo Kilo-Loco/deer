@@ -11,4 +11,5 @@ import Moya
 
 protocol NetworkingServiceInterface {
     var authProvider: MoyaProvider<AuthService> { get }
+    var scooterProvider: MoyaProvider<ScooterService> { get}
 }

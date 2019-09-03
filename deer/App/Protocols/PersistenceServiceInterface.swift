@@ -7,7 +7,11 @@
 //
 
 import Foundation
+import ReactiveSwift
+import Result
 
 protocol PersistenceServiceInterface {
-    
+    var scootersSignal: Signal<[SlateScooter], NoError> { get }
+    var scootersObserver: Signal<[SlateScooter], NoError>.Observer { get }
+    func save(_ scooters: [Scooter.JSONScooter])
 }

@@ -13,6 +13,7 @@ final class SessionCoordinator: SessionCoordinatorInterface {
     // MARK: - Instance Properties
     
     private var childCoordinators = [Coordinator]()
+    private var dataStore: DataStoreInterface?
     
     
     // MARK: Injected Properties
@@ -38,6 +39,14 @@ final class SessionCoordinator: SessionCoordinatorInterface {
         
         childCoordinators = [mapCoordinator, listCoordinator]
         childCoordinators.start()
+        
+        dataStore = factory.dataStore
+        
+        dataStore?.scootersSignal.observeValues { scooters in
+            print(scooters)
+        }
+        
+        dataStore?.getScooters()
     }
     
     
