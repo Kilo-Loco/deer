@@ -8,6 +8,7 @@
 
 import Foundation
 import Swinject
+import KeychainAccess
 
 final class AuthFactory {
     
@@ -19,6 +20,14 @@ final class AuthFactory {
     
     var keyboardService: KeyboardServiceInterface {
         return container.resolve(KeyboardServiceInterface.self)!
+    }
+    
+    var networkingService: NetworkingServiceInterface {
+        return container.resolve(NetworkingServiceInterface.self)!
+    }
+    
+    var keychain: Keychain {
+        return container.resolve(Keychain.self)!
     }
     
     // MARK: Injected Properties
@@ -38,8 +47,16 @@ final class AuthFactory {
     
     private func registerDependencies() {
         container.register(EmailEntryViewController.self) { [unowned self] _ in
-            let viewModel = EmailEntryViewModel(keyboardService: self.keyboardService)
+            let viewModel = EmailEntryViewModel(keyboardService: self.keyboardService,
+                                                networking: self.networkingService,
+                                                keychain: self.keychain)
             return EmailEntryViewController(viewModel: viewModel)
+        }
+    }
+    
+    func register(_ currentUser: User) {
+        container.register(UserInterface.self) { _ in
+            currentUser
         }
     }
 }

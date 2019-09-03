@@ -43,10 +43,15 @@ final class AppCoordinator {
     }
     
     private func determineState() -> State {
-//        let user = User(email: try! Email("rekylelee@gmail.com"))
-//        factory.registerCurrentUser(as: user)
-//        return .session(user)
-        return .auth
+        do {
+            let userData = try factory.keychain.getData("userData") ?? Data()
+            let user = try JSONDecoder().decode(User.self, from: userData)
+            factory.registerCurrentUser(as: user)
+            return .session(user)
+            
+        } catch {
+            return .auth
+        }
     }
     
     private func didStartSubFlow() -> Bool {
@@ -60,9 +65,19 @@ final class AppCoordinator {
             rootViewController = runSessionFlow(with: user)
         }
         
-        window.rootViewController?.present(rootViewController, animated: true)
+        transition(to: rootViewController)
         
         return true
+    }
+    
+    private func transition(to viewController: UIViewController) {
+        if window.rootViewController?.presentedViewController != nil {
+            window.rootViewController?.presentedViewController?.dismiss(animated: true) { [weak self] in
+                self?.window.rootViewController?.present(viewController, animated: true)
+            }
+        } else {
+            window.rootViewController?.present(viewController, animated: true)
+        }
     }
     
     
@@ -72,6 +87,13 @@ final class AppCoordinator {
         let authCoordinator = factory.authCoordinator
         childCoordinator = authCoordinator
         authCoordinator.start()
+    
+        authCoordinator.userSignal.observeValues { [weak self] user in
+            guard let self = self else { return }
+            self.state = .session(user)
+            self.transition(to: self.runSessionFlow(with: user))
+        }
+        
         return authCoordinator.rootViewController
     }
     

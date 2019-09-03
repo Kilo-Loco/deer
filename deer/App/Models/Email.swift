@@ -12,7 +12,7 @@ struct Email: Codable {
     let value: String
     
     init(_ value: String) throws {
-        self.value = try Email.validate(value)
+        self.value = try Email.validate(value).lowercased()
     }
 }
 

@@ -46,6 +46,7 @@ final class EmailEntryView: UIView {
         textField.textContentType = .emailAddress
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .done
+        textField.autocapitalizationType = .none
         return textField
     }()
     

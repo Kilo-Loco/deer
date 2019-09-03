@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 
 final class AuthCoordinator: AuthCoordinatorInterface {
     
     // MARK: - Communication
     
-    var didProvideUser: ((UserInterface) -> Void)?
+    let (userSignal, userObserver) = Signal<User, NoError>.pipe()
+    
+    
+    // MARK: - Observers
+    
+    var disposableUserObserver: Disposable?
     
     
     // MARK: - Injected Properties
@@ -40,6 +47,13 @@ final class AuthCoordinator: AuthCoordinatorInterface {
     // MARK: - Flows
     
     func showEmailEntry() {
-        rootViewController.pushViewController(factory.emailEntryVC, animated: false)
+        let emailEntryVC = factory.emailEntryVC
+        disposableUserObserver = emailEntryVC.viewModel.userSignal.observeValues { [weak self] user in
+            self?.factory.register(user)
+            self?.userObserver.send(value: user)
+            self?.userObserver.sendCompleted()
+        }
+        
+        rootViewController.pushViewController(emailEntryVC, animated: false)
     }
 }

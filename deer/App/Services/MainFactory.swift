@@ -8,6 +8,7 @@
 
 import UIKit
 import Swinject
+import KeychainAccess
 
 final class MainFactory {
     
@@ -19,6 +20,10 @@ final class MainFactory {
     
     var sessionCoordinator:SessionCoordinatorInterface {
         return container.resolve(SessionCoordinatorInterface.self)!
+    }
+    
+    var keychain: Keychain {
+        return container.resolve(Keychain.self)!
     }
     
     
@@ -38,9 +43,22 @@ final class MainFactory {
     // MARK: - Setup
     
     private func registerDependencies() {
+        
+        // Services
+        
         container.register(KeyboardServiceInterface.self) { _ in
             KeyboardService()
         }
+        
+        container.register(NetworkingServiceInterface.self) { _ in
+            NetworkingService()
+        }
+        
+        container.register(Keychain.self) { _ in
+            Keychain(service: "com.kiloloco.deer")
+        }
+        
+        // Coordinators
         
         container.register(AuthCoordinatorInterface.self) { [unowned self] _ in
             let navigationController = UINavigationController()

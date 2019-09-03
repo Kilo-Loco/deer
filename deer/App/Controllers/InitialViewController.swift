@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mortar
+import Cartography
 
 final class InitialViewController: UIViewController {
 
@@ -15,7 +15,7 @@ final class InitialViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "deerLogo")
+        imageView.image = UIImage(named: "deerIcon")
         return imageView
     }()
     
@@ -29,8 +29,10 @@ final class InitialViewController: UIViewController {
         
         view.addSubview(logoImageView)
         
-        logoImageView.m_center |=| view.m_center
-        logoImageView.m_size |=| 250
+        constrain(logoImageView, view) {
+            $0.center == $1.center
+            $0.width == 250
+            $0.height == 250
+        }
     }
-
 }
