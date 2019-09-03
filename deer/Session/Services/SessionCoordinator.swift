@@ -19,7 +19,7 @@ final class SessionCoordinator: SessionCoordinatorInterface {
     
     let rootViewController: UITabBarController
     let factory: SessionFactory
-    let dataStore: DataStoreInterface
+//    let dataStore: DataStoreInterface
     
     
     // MARK: - Initializer
@@ -28,14 +28,14 @@ final class SessionCoordinator: SessionCoordinatorInterface {
         rootViewController.tabBar.tintColor = .black
         self.rootViewController = rootViewController
         self.factory = factory
-        self.dataStore = factory.dataStore
+//        self.dataStore = factory.dataStore
     }
     
     
     // MARK: - Setup
     
     func start() {
-        dataStore.getScooters()
+//        dataStore.getScooters()
         
         let mapCoordinator = factory.mapCoordinator
         let listCoordinator = factory.listCoordinator

@@ -38,8 +38,15 @@ final class MapFactory {
     // MARK: - Setup
     
     private func registerDependencies() {
-        container.register(ScooterMapViewController.self) { _ in
-            let scooterMapVC = ScooterMapViewController()
+        
+        container.register(LocationService.self) { _ in
+            return LocationService()
+        }
+        
+        container.register(ScooterMapViewController.self) { [unowned self] r in
+            let locationService = r.resolve(LocationService.self)!
+            let viewModel = ScooterMapViewModel(dataStore: self.dataStore, locationService: locationService)
+            let scooterMapVC = ScooterMapViewController(viewModel: viewModel)
             scooterMapVC.title = "Map"
             scooterMapVC.navigationItem.title = "d e e r"
             return scooterMapVC

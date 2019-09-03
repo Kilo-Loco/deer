@@ -8,7 +8,6 @@ target 'deer' do
   pod 'Moya/ReactiveSwift', '~> 13.0'
   pod 'ReactiveCocoa', '~> 9.0'
   pod 'Swinject'
-  pod 'Mortar'
   pod 'Cartography', '~> 3.0'
   pod 'KeychainAccess'
 

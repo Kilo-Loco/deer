@@ -31,6 +31,8 @@
 		9E2FCAF0231E53440093E858 /* Scooter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAEE231E53440093E858 /* Scooter+CoreDataProperties.swift */; };
 		9E2FCAF2231E53A50093E858 /* SlateScooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF1231E53A50093E858 /* SlateScooter.swift */; };
 		9E2FCAF4231E60560093E858 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF3231E60560093E858 /* MapFactory.swift */; };
+		9E2FCAF6231E64EE0093E858 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF5231E64EE0093E858 /* LocationService.swift */; };
+		9E2FCAF9231E680D0093E858 /* ScooterMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FCAF8231E680D0093E858 /* ScooterMapViewModel.swift */; };
 		9E6CA5EB231B3D250084A38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5EA231B3D250084A38C /* AppDelegate.swift */; };
 		9E6CA5F3231B3D250084A38C /* deer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F1231B3D250084A38C /* deer.xcdatamodeld */; };
 		9E6CA5F5231B3D260084A38C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6CA5F4231B3D260084A38C /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		9E2FCAEE231E53440093E858 /* Scooter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scooter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9E2FCAF1231E53A50093E858 /* SlateScooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlateScooter.swift; sourceTree = "<group>"; };
 		9E2FCAF3231E60560093E858 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
+		9E2FCAF5231E64EE0093E858 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		9E2FCAF8231E680D0093E858 /* ScooterMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterMapViewModel.swift; sourceTree = "<group>"; };
 		9E6CA5E7231B3D250084A38C /* deer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = deer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6CA5EA231B3D250084A38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E6CA5F2231B3D250084A38C /* deer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deer.xcdatamodel; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 				9E2FC41B231D75570093E858 /* EmailEntryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9E2FCAF7231E67F90093E858 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E2FCAF8231E680D0093E858 /* ScooterMapViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9E6CA5DE231B3D250084A38C = {
@@ -305,6 +317,7 @@
 				9E2FCAAB231E17950093E858 /* ScooterService.swift */,
 				9E2FCADD231E2BB20093E858 /* SessionFactory.swift */,
 				9E2FCADF231E348E0093E858 /* DataStore.swift */,
+				9E2FCAF5231E64EE0093E858 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -312,6 +325,7 @@
 		9E6CA61F231C77CB0084A38C /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9E2FCAF7231E67F90093E858 /* ViewModel */,
 				9E2FC402231CD7B30093E858 /* Views */,
 				9E6CA61B231C75BB0084A38C /* Controllers */,
 				9E6CA626231C7B570084A38C /* Services */,
@@ -513,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E6CA62E231C7DE20084A38C /* ListCoordinator.swift in Sources */,
+				9E2FCAF9231E680D0093E858 /* ScooterMapViewModel.swift in Sources */,
 				9E2FCAF0231E53440093E858 /* Scooter+CoreDataProperties.swift in Sources */,
 				9E6CA625231C7A8B0084A38C /* ArrayExtensions.swift in Sources */,
 				9E2FCAA4231DE7670093E858 /* NetworkingService.swift in Sources */,
@@ -538,6 +553,7 @@
 				9E6CA639231C85AA0084A38C /* EmailEntryView.swift in Sources */,
 				9E2FCAE4231E353A0093E858 /* PersistenceServiceInterface.swift in Sources */,
 				9E2FC408231CF2DC0093E858 /* MainFactory.swift in Sources */,
+				9E2FCAF6231E64EE0093E858 /* LocationService.swift in Sources */,
 				9E2FCAF2231E53A50093E858 /* SlateScooter.swift in Sources */,
 				9E2FC413231D0C150093E858 /* KeyboardService.swift in Sources */,
 				9E6CA643231CA8530084A38C /* Email.swift in Sources */,
