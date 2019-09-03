@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Location: NSObject, NSCoding {
+public class Location: NSObject, NSCoding, Decodable {
     let latitude: Double
     let longitude: Double
     
@@ -27,6 +27,17 @@ public class Location: NSObject, NSCoding {
     public func encode(with coder: NSCoder) {
         coder.encode(self.latitude, forKey: "latitude")
         coder.encode(self.longitude, forKey: "longitude")
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        latitude = try container.decode(Double.self, forKey: .latitude)
+        longitude = try container.decode(Double.self, forKey: .longitude)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
     }
 }
 

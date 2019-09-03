@@ -22,3 +22,11 @@ extension Scooter {
     @NSManaged public var location: Location
 
 }
+
+extension Scooter {
+    struct JSONScooter: Decodable {
+        let id: String?
+        let name: String
+        let location: Location
+    }
+}

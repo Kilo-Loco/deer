@@ -14,7 +14,9 @@ final class CoreDataService: PersistenceServiceInterface {
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "deer")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { [unowned container] (storeDescription, error) in
+            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
             if let error = error as NSError? {
                 
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -36,5 +38,9 @@ final class CoreDataService: PersistenceServiceInterface {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func save(_ scooters: [Scooter.JSONScooter]) {
+        
     }
 }
