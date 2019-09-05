@@ -16,7 +16,7 @@ final class ScooterMapViewModel {
     
     // MARK: - COmmunication
     
-    let (locationSignal, locationObserver) = Signal<CLLocation, NoError>.pipe()
+    let mapCameraCoordinates = MutableProperty<CLLocationCoordinate2D>(.birdOfficeCoordinates)
     let scootersProperty = MutableProperty<[SlateScooter]>([])
     let annotationsProperty = MutableProperty<[ScooterAnnotation]>([])
     
@@ -39,13 +39,6 @@ final class ScooterMapViewModel {
     // MARK: - Setup
     
     private func setupObservers() {
-        locationService.currentLocationPropery
-            .producer
-            .startWithValues { [weak self] currentLocation in
-                guard let location = currentLocation else { return }
-                self?.locationObserver.send(value: location)
-        }
-        
         annotationsProperty <~ dataStore.scootersProperty.map { scooters in
             let annotations: [ScooterAnnotation] = scooters.map {
                 let annotation = ScooterAnnotation()
@@ -55,6 +48,10 @@ final class ScooterMapViewModel {
                 return annotation
             }
             return annotations
+        }
+        
+        locationService.currentLocationPropery.producer.startWithValues { _ in
+            
         }
     }
     
@@ -67,5 +64,14 @@ final class ScooterMapViewModel {
     
     func getScooters() {
         dataStore.getScooters()
+    }
+    
+    func getCurrentLocation() {
+        locationService.currentLocationPropery
+            .producer
+            .startWithValues { [weak self] currentLocation in
+                guard let location = currentLocation else { return }
+                self?.mapCameraCoordinates.value = location.coordinate
+        }
     }
 }

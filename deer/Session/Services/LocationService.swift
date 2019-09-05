@@ -30,7 +30,7 @@ final class LocationService: NSObject {
     // MARK: - Setup
     
     private func setupManager() {
-        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.delegate = self
     }
     
@@ -40,6 +40,11 @@ final class LocationService: NSObject {
     func requestCurrentLocation() {
         manager.requestWhenInUseAuthorization()
         manager.startMonitoringSignificantLocationChanges()
+        sendFirstLocation()
+    }
+    
+    private func sendFirstLocation() {
+        currentLocationPropery.value = manager.location
     }
 }
 
@@ -48,6 +53,7 @@ final class LocationService: NSObject {
 
 extension LocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("updating location")
         currentLocationPropery.value = locations.last
     }
     

@@ -54,12 +54,10 @@ final class ScooterMapViewController: UIViewController {
     }
     
     private func setupObservers() {
-        viewModel.locationSignal.observeValues { [weak self] location in
-//            let coordinates = location.coordinate
-//            self?.panCamera(to: coordinates)
-            
-            let birdOfficeCoordinates = CLLocationCoordinate2D(latitude: 34.0301, longitude: -118.4728)
-            self?.panCamera(to: birdOfficeCoordinates)
+        viewModel.mapCameraCoordinates.producer.startWithValues { [weak self] currentLocationCoordinates in
+            DispatchQueue.main.async {
+                self?.panCamera(to: currentLocationCoordinates)
+            }
         }
         
         viewModel.annotationsProperty.producer.startWithValues { [weak self] annotations in

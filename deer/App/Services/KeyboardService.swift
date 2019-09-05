@@ -16,10 +16,10 @@ final class KeyboardService: KeyboardServiceInterface {
     // MARK: - Communication
     
     private let center = NotificationCenter.default.reactive
-    private lazy var keyboardDidShowSignal = center.keyboard(.didShow)
+    private lazy var keyboardWillShowSignal = center.keyboard(.willShow)
     private lazy var keyboardWillHideSignal = center.keyboard(.didHide)
     
     lazy var keyboardSignal: Signal<CGRect, NoError> = Signal<KeyboardChangeContext, NoError>
-        .merge(keyboardDidShowSignal, keyboardWillHideSignal)
+        .merge(keyboardWillShowSignal, keyboardWillHideSignal)
         .map { $0.endFrame }
 }
